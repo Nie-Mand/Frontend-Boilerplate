@@ -21,8 +21,9 @@
       "types/*": ["src/@types/*"],
       "services/*": ["./src/services/*"],
       "redux/hooks": ["./src/redux/hooks"],
-      "ui/*": ["./src/ui/*"],
-  }
+      "ui/*": ["./src/ui/*"]
+    },
+    "types": ["cypress"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
