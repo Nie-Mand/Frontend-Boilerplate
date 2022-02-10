@@ -1,13 +1,18 @@
-import { useEffect, useCallback } from 'react'
+import { useEffect, useCallback, useMemo } from 'react'
 import * as actions from './actions'
-import { useSelector } from 'react-redux'
-import { useActions } from '../utils'
+import { useSelector, useDispatch } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 export const useExample = () => {
-  const _actions = useActions(actions)
+  const dispatch = useDispatch()
+  const _actions = useMemo(() => {
+    return bindActionCreators(actions, dispatch)
+  }, [actions, dispatch])
 
   useEffect(() => {
     _actions.init()
-    return () => _actions.reset()
+    return () => {
+      _actions.resetInit()
+    }
   }, [])
 }
