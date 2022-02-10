@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { Suspense } from 'react'
+import routes from './routes'
+import { RouteSetup as Routes } from './utils'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Loading from './components/Loading'
 
 function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
+    <Suspense fallback={<Loading />}>
+      <Router>
+        <Routes routes={routes} />
+      </Router>
+    </Suspense>
+  )
 }
 
-export default App;
+export default App
