@@ -8,7 +8,7 @@ const HomePage = (props: Props) => {
   return (
     <div>
       <h1>{intl.formatMessage(messages['home.welcome'])}</h1>
-      <Button />
+      <Button>Hello world</Button>
     </div>
   )
 }
