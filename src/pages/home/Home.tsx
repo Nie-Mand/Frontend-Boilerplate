@@ -1,12 +1,16 @@
-import { useExample } from '../../redux/hooks'
+import { useIntl } from 'react-intl'
+import messages from './messages'
 
-const HomePage = () => {
-  useExample()
+const HomePage = (props: Props) => {
+  const intl = useIntl()
+
   return (
     <div>
-      <h1>Home page</h1>
+      <h1>{intl.formatMessage(messages['home.welcome'])}</h1>
     </div>
   )
 }
+
+type Props = {}
 
 export default HomePage

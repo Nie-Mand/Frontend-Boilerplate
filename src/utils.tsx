@@ -16,3 +16,16 @@ export const createRoute: RouteCreator = (path, componentPath, roles) => ({
   componentPath,
   roles,
 })
+
+type CreateMessages = (messages: { id: string; defaultMessage: string }[]) => {
+  [key: string]: { id: string; defaultMessage: string }
+}
+export const createMessages: CreateMessages = messages => {
+  return messages.reduce(
+    (_messages, message) => ({
+      ..._messages,
+      [message.id]: message,
+    }),
+    {},
+  )
+}
