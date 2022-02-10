@@ -4,7 +4,10 @@ import Button from 'ui/Button'
 import Input from 'ui/Input'
 import { useState } from 'react'
 
+import { useExample } from 'redux/hooks'
+
 const HomePage = () => {
+  useExample()
   const intl = useIntl()
   const [name, setName] = useState('')
   const [display, setDisplay] = useState('')

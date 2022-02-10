@@ -1,5 +1,5 @@
 import { Route as RouteType } from 'types/base'
-import { Route, Routes, Navigate } from 'react-router-dom'
+import { Route, Switch as Routes, Redirect as Navigate } from 'react-router-dom'
 import NotFound from './NotFound'
 
 const ProtectedRoute = (props: { element: JSX.Element; roles?: string[] }) => {
@@ -8,7 +8,7 @@ const ProtectedRoute = (props: { element: JSX.Element; roles?: string[] }) => {
 
   // TODO: Implement authorization
 
-  return <Navigate to="/login" replace />
+  return <Navigate to="/login" />
 }
 
 export const RoutesSetup = (props: { routes: RouteType[] }) => {
@@ -18,7 +18,8 @@ export const RoutesSetup = (props: { routes: RouteType[] }) => {
         <Route
           key={path}
           path={path}
-          element={
+          exact
+          children={
             <ProtectedRoute
               element={
                 <Layout>
@@ -30,7 +31,9 @@ export const RoutesSetup = (props: { routes: RouteType[] }) => {
           }
         />
       ))}
-      <Route path="*" element={<NotFound />} />
+      <Route path="*">
+        <NotFound />
+      </Route>
     </Routes>
   )
 }

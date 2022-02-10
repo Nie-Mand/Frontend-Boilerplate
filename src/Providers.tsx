@@ -1,6 +1,6 @@
 import { HelmetProvider } from 'react-helmet-async'
 import { Provider as ReduxProvider } from 'react-redux'
-import { HistoryRouter as Router } from 'redux-first-history/rr6'
+import { Router } from 'react-router-dom'
 import store from './redux/store'
 import { history } from './redux/store'
 import { Toaster } from 'react-hot-toast'

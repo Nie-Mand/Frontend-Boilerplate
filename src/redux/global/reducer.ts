@@ -11,10 +11,6 @@ const reducer = (state = initialState, action: Action) =>
         toast('init.request')
         break
 
-      case constants.init.reset:
-        toast('init.reset')
-        break
-
       case constants.init.failure:
         toast('init.failed')
         break
