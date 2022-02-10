@@ -1,16 +1,16 @@
 import { Suspense } from 'react'
 import routes from './routes'
-import { RouteSetup as Routes } from './utils'
-import { BrowserRouter as Router } from 'react-router-dom'
-import Loading from './components/Loading'
+import Routes from './components/base/RoutesHandler'
+import Loading from './components/base/Loading'
+import Providers from './Providers'
 
 function App() {
   return (
-    <Suspense fallback={<Loading />}>
-      <Router>
+    <Providers>
+      <Suspense fallback={<Loading />}>
         <Routes routes={routes} />
-      </Router>
-    </Suspense>
+      </Suspense>
+    </Providers>
   )
 }
 
