@@ -1,4 +1,4 @@
-import { AsyncState } from '../../@types/redux'
+import { AsyncState } from 'types/redux'
 
 const state: State = {
   isAuthentificated: null,

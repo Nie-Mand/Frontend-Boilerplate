@@ -1,5 +1,5 @@
 import produce from 'immer'
-import { Action } from '../../@types/redux'
+import { Action } from 'types/redux'
 import * as constants from './constants'
 import initialState from './initial'
 import toast from 'react-hot-toast'

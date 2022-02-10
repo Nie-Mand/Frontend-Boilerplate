@@ -2,7 +2,7 @@ import { call, put, takeLatest, all } from 'redux-saga/effects'
 import { push } from 'redux-first-history'
 import type { Action } from '../../@types/redux'
 import * as constants from './constants'
-import * as api from '../../services/hello'
+import * as api from 'services/hello'
 
 function* exampleSaga() {
   yield takeLatest(constants.init.request, function* (action: Action) {

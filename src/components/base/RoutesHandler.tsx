@@ -1,4 +1,4 @@
-import { Route as RouteType } from '../../@types/base'
+import { Route as RouteType } from 'types/base'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import NotFound from './NotFound'
 

@@ -1,5 +1,6 @@
 import { useIntl } from 'react-intl'
 import messages from './messages'
+import Button from 'ui/Button'
 
 const HomePage = (props: Props) => {
   const intl = useIntl()
@@ -7,6 +8,7 @@ const HomePage = (props: Props) => {
   return (
     <div>
       <h1>{intl.formatMessage(messages['home.welcome'])}</h1>
+      <Button />
     </div>
   )
 }

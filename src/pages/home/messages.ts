@@ -1,4 +1,4 @@
-import { createMessages } from '../../utils'
+import { createMessages } from 'utils'
 
 const messages = createMessages([
   {

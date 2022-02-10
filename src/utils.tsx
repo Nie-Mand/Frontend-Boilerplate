@@ -1,4 +1,4 @@
-import { RoutesCreator, RouteCreator } from './@types/base'
+import { RoutesCreator, RouteCreator } from 'types/base'
 import { lazy } from 'react'
 
 export const createRoutes: RoutesCreator = routes => {
