@@ -1,11 +1,21 @@
 import { RouteBlueprint } from 'types/base'
-import { createRoutes, createRoute } from 'utils'
+import { createRoutes } from 'utils'
 
 const routes: RouteBlueprint[] = [
-  // createRoute('/path', './pages/jsx/path', ['user', 'admin']),
-  createRoute('/', './pages/home'),
-  createRoute('/admin', './pages/admin', ['admin']),
-  createRoute('/login', './pages/login'),
+  {
+    path: '/',
+    componentPath: './pages/home',
+    layout: 'LeftSidebar',
+  },
+  {
+    path: '/admin',
+    componentPath: './pages/admin',
+    roles: ['admin'],
+  },
+  {
+    path: '/login',
+    componentPath: './pages/login',
+  },
 ]
 
 export default createRoutes(routes)

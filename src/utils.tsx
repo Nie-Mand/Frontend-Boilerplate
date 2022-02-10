@@ -6,16 +6,13 @@ export const createRoutes: RoutesCreator = routes => {
     return {
       path: route.path,
       Component: lazy(() => import(route.componentPath)),
+      Layout: lazy(
+        () => import(`./components/layouts/${route.layout || 'Default'}`),
+      ),
       roles: route.roles,
     }
   })
 }
-
-export const createRoute: RouteCreator = (path, componentPath, roles) => ({
-  path,
-  componentPath,
-  roles,
-})
 
 type CreateMessages = (messages: { id: string; defaultMessage: string }[]) => {
   [key: string]: { id: string; defaultMessage: string }

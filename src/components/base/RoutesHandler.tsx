@@ -14,11 +14,20 @@ const ProtectedRoute = (props: { element: JSX.Element; roles?: string[] }) => {
 export const RoutesSetup = (props: { routes: RouteType[] }) => {
   return (
     <Routes>
-      {props.routes.map(({ path, Component, roles }) => (
+      {props.routes.map(({ path, Component, Layout, roles }) => (
         <Route
           key={path}
           path={path}
-          element={<ProtectedRoute element={<Component />} roles={roles} />}
+          element={
+            <ProtectedRoute
+              element={
+                <Layout>
+                  <Component />
+                </Layout>
+              }
+              roles={roles}
+            />
+          }
         />
       ))}
       <Route path="*" element={<NotFound />} />

@@ -4,7 +4,7 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
+    "allowJs": true,
     "skipLibCheck": false,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
@@ -18,7 +18,7 @@
     "jsx": "react-jsx",
     "paths": {
       "utils": ["./src/utils"],
-      "types/*": ["src/types/*"],
+      "types/*": ["src/@types/*"],
       "services/*": ["./src/services/*"],
       "redux/hooks": ["./src/redux/hooks"],
       "ui/*": ["./src/ui/*"],
