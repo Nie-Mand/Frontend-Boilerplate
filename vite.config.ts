@@ -12,6 +12,5 @@ export default defineConfig({
       'redux/hooks': path.resolve(__dirname, './src/redux/hooks'),
     },
   },
-
   plugins: [react()],
 })

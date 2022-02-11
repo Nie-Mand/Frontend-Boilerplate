@@ -6,22 +6,19 @@ import { history } from './redux/store'
 import { Toaster } from 'react-hot-toast'
 import I18NProvider from './i18n'
 import { ThemeProvider } from '@mui/material'
-import SocketProvider from './sockets'
 import theme from 'ui/theme'
 
 const Providers = (props: Props) => {
   return (
     <I18NProvider>
-      <SocketProvider>
-        <ThemeProvider theme={theme}>
-          <Router history={history}>
-            <Toaster />
-            <ReduxProvider store={store}>
-              <HelmetProvider>{props.children}</HelmetProvider>
-            </ReduxProvider>
-          </Router>
-        </ThemeProvider>
-      </SocketProvider>
+      <ThemeProvider theme={theme}>
+        <Router history={history}>
+          <Toaster />
+          <ReduxProvider store={store}>
+            <HelmetProvider>{props.children}</HelmetProvider>
+          </ReduxProvider>
+        </Router>
+      </ThemeProvider>
     </I18NProvider>
   )
 }

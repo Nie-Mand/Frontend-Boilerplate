@@ -1,8 +1,8 @@
 {
-  "baseUrl": "http://localhost:3000",
-  "video": false,
-  "supportFile": false,
-  "screenshotOnRunFailure": false,
-  "testFiles": "**/*{test,spec}.{ts,tsx}",
-  "componentFolder": "src"
+    "baseUrl": "http://localhost:3000",
+    "video": false,
+    "supportFile": false,
+
+      "testFiles": "**/*{test,spec}.{ts,tsx}",
+        "componentFolder": "src"
 }
