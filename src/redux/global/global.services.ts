@@ -1,3 +1,3 @@
-import axios from './client'
+import axios from 'app/api'
 
 export const helloWorld = () => axios.post('/')

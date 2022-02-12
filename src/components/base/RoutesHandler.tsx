@@ -1,13 +1,12 @@
-import { Route as RouteType } from 'types/base'
 import { Route, Switch as Routes, Redirect as Navigate } from 'react-router-dom'
+import { Route as RouteType } from 'app/types/base'
 import NotFound from './NotFound'
 
-const ProtectedRoute = (props: { element: JSX.Element; roles?: string[] }) => {
+const Protected = (props: { element: JSX.Element; roles?: string[] }) => {
   const { element, roles } = props
   if (!roles || roles.length === 0) return element
 
   // TODO: Implement authorization
-
   return <Navigate to="/login" />
 }
 
@@ -16,11 +15,11 @@ export const RoutesSetup = (props: { routes: RouteType[] }) => {
     <Routes>
       {props.routes.map(({ path, Component, Layout, roles }) => (
         <Route
+          exact
           key={path}
           path={path}
-          exact
           children={
-            <ProtectedRoute
+            <Protected
               element={
                 <Layout>
                   <Component />
@@ -31,9 +30,7 @@ export const RoutesSetup = (props: { routes: RouteType[] }) => {
           }
         />
       ))}
-      <Route path="*">
-        <NotFound />
-      </Route>
+      <Route path="*" children={<NotFound />} />
     </Routes>
   )
 }

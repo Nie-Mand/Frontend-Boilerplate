@@ -1,1 +1,1 @@
-export * from './global/hooks'
+export * from './global/global.hooks'

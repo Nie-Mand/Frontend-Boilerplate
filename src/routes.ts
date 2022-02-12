@@ -1,5 +1,5 @@
-import { RouteBlueprint } from 'types/base'
-import { createRoutes } from 'utils'
+import { RouteBlueprint } from './types/base'
+import { createRoutes } from './utils'
 
 const routes: RouteBlueprint[] = [
   {

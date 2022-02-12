@@ -1,0 +1,2 @@
+<%= exports %>
+export * as <%= routeName %> from './<%= routeName %>'

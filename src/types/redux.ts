@@ -1,7 +1,7 @@
 export type AsyncState<T> = {
   data: T
   loading: boolean
-  error: any
+  error: string | null
 }
 
 export type Action = {
@@ -13,4 +13,5 @@ export type AsyncActionType = {
   failure: string
   success: string
   request: string
+  reset: string
 }

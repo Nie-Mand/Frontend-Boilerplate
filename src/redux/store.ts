@@ -1,15 +1,21 @@
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { composeWithDevTools } from '@redux-devtools/extension'
-import reducer from './reducer'
-import saga from './sagas'
-import { routerMiddleware, createReduxHistory } from './router'
+import {
+  reducer,
+  saga,
+  customMiddleware,
+  routerMiddleware,
+  createReduxHistory,
+} from './config'
 
 const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(
   reducer,
-  composeWithDevTools(applyMiddleware(sagaMiddleware, routerMiddleware)),
+  composeWithDevTools(
+    applyMiddleware(customMiddleware, sagaMiddleware, routerMiddleware),
+  ),
 )
 sagaMiddleware.run(saga)
 

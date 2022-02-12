@@ -1,0 +1,19 @@
+export const getAll = async () => {
+  return 'get all <%= routeName %>'
+}
+
+export const create = async () => {
+  return 'create <%= routeName %>'
+}
+
+export const getById = async () => {
+  return 'get <%= routeName %> by id'
+}
+
+export const update = async () => {
+  return 'update <%= routeName %> by id'
+}
+
+export const remove = async () => {
+  return 'remove <%= routeName %> by id'
+}

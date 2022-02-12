@@ -1,0 +1,13 @@
+import * as controllers from './controllers'
+import { type Route } from '../../@types/base'
+export { config } from './config'
+
+export const route: Route = (app, _, done) => {
+  app.get('/', controllers.getAll)
+  app.post('/', controllers.create)
+  app.get('/:id', controllers.getById)
+  app.put('/:id', controllers.update)
+  app.delete('/:id', controllers.remove)
+
+  done()
+}

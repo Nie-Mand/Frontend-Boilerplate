@@ -1,0 +1,14 @@
+import { AsyncState } from 'types/redux'
+
+const state: State = {
+  init: {
+    loading: false,
+    error: null,
+    data: null,
+  },
+}
+export default state
+
+export type State = {
+  init: AsyncState<null>
+}

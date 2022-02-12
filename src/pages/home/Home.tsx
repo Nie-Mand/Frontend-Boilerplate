@@ -1,20 +1,17 @@
 import { useIntl } from 'react-intl'
 import messages from './messages'
-import Button from 'ui/Button'
-import Input from 'ui/Input'
+import { Button, Input } from 'app/ui'
 import { useState } from 'react'
-
-import { useExample } from 'redux/hooks'
+import { useExample } from 'app/redux/hooks'
 
 const HomePage = () => {
-  useExample()
+  const { createUser, state } = useExample()
+
+  console.log(state)
+
   const intl = useIntl()
   const [name, setName] = useState('')
-  const [display, setDisplay] = useState('')
-
-  const handleClick = () => {
-    setDisplay(name)
-  }
+  const [display] = useState('')
 
   return (
     <div>
@@ -25,7 +22,7 @@ const HomePage = () => {
         onChange={e => setName(e.target.value)}
         cypress-id="cy-input"
       />
-      <Button onClick={handleClick} cypress-id="cy-button">
+      <Button onClick={createUser} cypress-id="cy-button">
         Hello world
       </Button>
     </div>
