@@ -7,9 +7,12 @@ export const create = async (
   templateName: string,
   filepath: string,
   data: any,
-  callback: () => void,
+  callback: (err: any) => void,
 ) => {
   const templatePath = Path.resolve(__dirname, './templates/', templateName)
+
+  console.log(filepath)
+
   const templateContent = await Fs.readFileSync(templatePath, 'utf8')
   return Fs.writeFile(filepath, Ejs.render(templateContent, data), callback)
 }
@@ -18,7 +21,7 @@ export const update = async (
   templateName: string,
   filepath: string,
   data: any,
-  callback: () => void,
+  callback: (err: any) => void,
 ) => {
   const oldContent = await Fs.readFileSync(filepath, 'utf8')
   const templatePath = Path.resolve(__dirname, './templates/', templateName)
@@ -26,14 +29,7 @@ export const update = async (
 
   Fs.writeFile(
     filepath,
-    replace(
-      Ejs.render(templateContent, {
-        exports: oldContent,
-        routeName: data.routeName,
-      }),
-      /&#39;/g,
-      "'",
-    ),
+    replace(oldContent + Ejs.render(templateContent, data), /&#39;/g, "'"),
     callback,
   )
 }

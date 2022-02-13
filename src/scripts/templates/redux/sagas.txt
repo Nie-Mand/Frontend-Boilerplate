@@ -1,0 +1,39 @@
+import { call, put, takeLatest, all } from 'redux-saga/effects'
+import type { Action } from 'app/types/redux'
+import * as constants from './<%= name %>.constants'
+import * as api from './<%= name %>.services'
+
+
+export function* <%= name %>Saga() {
+  yield takeLatest(constants.create<%= Name %>.request, function* (action: Action) {
+    try {
+      type Response = {
+        data: {
+          <%= name %>: {
+            message: string
+          }
+        }
+      }
+      const response: Response = yield call(api.create<%= Name %>, action.payload)
+
+      if (response) {
+        yield put({
+          type: constants.create<%= Name %>.success,
+          payload: {},
+        })
+      } else {
+        yield put({
+          type: constants.create<%= Name %>.failure,
+          payload: {
+            error: 'error',
+          },
+        })
+      }
+    } catch (e: any) {
+      yield put({
+        type: constants.create<%= Name %>.failure,
+        payload: { error: e.response.data ? e.response.data.error : e.message },
+      })
+    }
+  })
+}

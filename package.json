@@ -10,7 +10,7 @@
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "test": "cypress run-ct",
     "prepare": "husky install",
-    "make": "ts-node ./src/scripts",
+    "make": "ts-node src/scripts/make.ts",
     "collect": "ts-node src/scripts/collect.ts",
     "check": "depcheck"
   },
@@ -44,6 +44,7 @@
     "@cypress/react": "^5.12.3",
     "@cypress/vite-dev-server": "^2.2.2",
     "@cypress/webpack-dev-server": "^1.8.1",
+    "@types/ejs": "^3.1.0",
     "@types/glob": "^7.2.0",
     "@types/history": "^5.0.0",
     "@types/inquirer": "^8.2.0",
