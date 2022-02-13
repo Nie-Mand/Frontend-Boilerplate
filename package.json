@@ -9,6 +9,7 @@
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "test": "cypress run-ct",
+    "test:live": "cypress open",
     "prepare": "husky install",
     "make": "ts-node src/scripts/make.ts",
     "collect": "ts-node src/scripts/collect.ts",

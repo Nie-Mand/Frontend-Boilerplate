@@ -3,7 +3,7 @@ import type { Action } from 'app/types/redux'
 import * as constants from './global.constants'
 import * as api from './global.services'
 
-// FIXME: add routing in sagas
+// ! FIXME: add routing in sagas
 
 export function* exampleSaga() {
   yield takeLatest(constants.createUser.request, function* (action: Action) {

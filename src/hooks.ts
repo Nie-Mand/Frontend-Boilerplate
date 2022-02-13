@@ -9,8 +9,6 @@ export const useMessages = (ns: string) => {
     defaultMessage: string
   }
   const handler = (message: Message) => {
-    console.log(Object.keys(message.id))
-
     return t(`${ns}.${message.id}`, { defaultMessage: message.defaultMessage })
   }
 
