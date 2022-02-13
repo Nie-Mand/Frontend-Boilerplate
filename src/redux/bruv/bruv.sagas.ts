@@ -3,7 +3,6 @@ import type { Action } from 'app/types/redux'
 import * as constants from './bruv.constants'
 import * as api from './bruv.services'
 
-
 export function* bruvSaga() {
   yield takeLatest(constants.createBruv.request, function* (action: Action) {
     try {
