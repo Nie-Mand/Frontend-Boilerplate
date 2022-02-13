@@ -19,8 +19,9 @@
     "paths": {
       "app/*": ["./src/*"]
     },
-    "types": ["cypress"]
+    "types": ["node", "cypress"]
   },
   "include": ["src"],
+  "exclude": ["scripts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

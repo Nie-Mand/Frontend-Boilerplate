@@ -8,9 +8,7 @@ export const useExample = () => {
   const actions = useActions()
   const state = useSelector((state: State) => state)
 
-  const createUser = useCallback(payload => {
-    actions.createUser(payload)
-  }, [])
+  const createUser = useCallback(actions.createUser, [])
 
   return {
     createUser,

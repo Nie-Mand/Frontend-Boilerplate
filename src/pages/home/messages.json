@@ -1,0 +1,6 @@
+{
+    "welcome": {
+        "id": "welcome",
+        "defaultMessage": "Welcome to React"
+    }
+}
