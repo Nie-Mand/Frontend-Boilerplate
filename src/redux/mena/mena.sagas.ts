@@ -1,28 +1,28 @@
 import { call, put, takeLatest, all } from 'redux-saga/effects'
 import type { Action } from 'app/types/redux'
-import * as constants from './bruv.constants'
-import * as api from './bruv.services'
+import * as constants from './mena.constants'
+import * as api from './mena.services'
 
-export function* bruvSaga() {
-  yield takeLatest(constants.createBruv.request, function* (action: Action) {
+export function* menaSaga() {
+  yield takeLatest(constants.createMena.request, function* (action: Action) {
     try {
       type Response = {
         data: {
-          bruv: {
+          mena: {
             message: string
           }
         }
       }
-      const response: Response = yield call(api.createBruv, action.payload)
+      const response: Response = yield call(api.createMena, action.payload)
 
       if (response) {
         yield put({
-          type: constants.createBruv.success,
+          type: constants.createMena.success,
           payload: {},
         })
       } else {
         yield put({
-          type: constants.createBruv.failure,
+          type: constants.createMena.failure,
           payload: {
             error: 'error',
           },
@@ -30,7 +30,7 @@ export function* bruvSaga() {
       }
     } catch (e: any) {
       yield put({
-        type: constants.createBruv.failure,
+        type: constants.createMena.failure,
         payload: { error: e.response.data ? e.response.data.error : e.message },
       })
     }

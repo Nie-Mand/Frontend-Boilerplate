@@ -1,7 +1,7 @@
 import { AsyncState } from 'app/types/redux'
 
 const initialState: State = {
-  createBruv: {
+  createMena: {
     loading: false,
     error: null,
     data: null,
@@ -10,9 +10,9 @@ const initialState: State = {
 export default initialState
 
 export type State = {
-  createBruv: AsyncState<null | Bruv>
+  createMena: AsyncState<null | Mena>
 }
 
-type Bruv = {
+type Mena = {
   message: string
 }

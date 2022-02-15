@@ -1,7 +1,7 @@
 import { createActionType } from '../utils'
 
-const prefix = 'BRUV'
+const prefix = 'MENA'
 const create = createActionType(prefix)
 
 export const init = create.basic('INIT')
-export const createBruv = create.request('CREATE_BRUV')
+export const createMena = create.async('CREATE_MENA')

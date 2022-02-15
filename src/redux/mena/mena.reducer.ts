@@ -1,7 +1,7 @@
 import produce from 'immer'
 import { Action } from 'app/types/redux'
-import * as constants from './bruv.constants'
-import initialState from './bruv.state'
+import * as constants from './mena.constants'
+import initialState from './mena.state'
 import toast from 'react-hot-toast'
 
 export const reducer = (state = initialState, action: Action) =>
@@ -11,15 +11,15 @@ export const reducer = (state = initialState, action: Action) =>
         toast('init')
         break
 
-      case constants.createBruv.request:
+      case constants.createMena.request:
         toast('request')
         break
 
-      case constants.createBruv.failure:
+      case constants.createMena.failure:
         toast('failed')
         break
 
-      case constants.createBruv.success:
+      case constants.createMena.success:
         toast('successed')
         break
 

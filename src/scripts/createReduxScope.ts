@@ -11,23 +11,24 @@ export const createReduxScope = async () => {
   const config = await question.prompt([
     {
       type: 'input',
-      name: 'scopeName',
-      message: 'What is the name of the scope?',
+      name: 'feature',
+      message: 'What is the name of the feature?',
       default: 'example',
     },
   ])
 
-  const spinner = createSpinner(`creating ${config.scopeName}..\n`).start()
+  const feature = config.feature.toLowerCase()
 
-  const exists = Fs.existsSync(path(`redux/${config.scopeName}`))
+  const spinner = createSpinner(`creating ${feature}..\n`).start()
+
+  const exists = Fs.existsSync(path(`redux/${feature}`))
 
   if (!exists) {
-    Fs.mkdirSync(path(`redux/${config.scopeName}`))
+    Fs.mkdirSync(path(`redux/${feature}`))
 
-    const pathOf = (filename: string) =>
-      path(`redux/${config.scopeName}/${filename}`)
+    const pathOf = (filename: string) => path(`redux/${feature}/${filename}`)
 
-    const filePath = (file: string) => `/${config.scopeName}.${file}`
+    const filePath = (file: string) => `/${feature}.${file}`
 
     const success = (file: string, action: string) => (e: any) => {
       if (e) {
@@ -45,8 +46,8 @@ export const createReduxScope = async () => {
       'redux/constants.txt',
       pathOf(filePath('constants.ts')),
       {
-        Name: capitalize(config.scopeName),
-        NAME: config.scopeName.toUpperCase(),
+        Name: capitalize(feature),
+        NAME: feature.toUpperCase(),
       },
       success('constants.ts', 'created'),
     )
@@ -55,8 +56,8 @@ export const createReduxScope = async () => {
       'redux/actions.txt',
       pathOf(filePath('actions.ts')),
       {
-        name: config.scopeName,
-        Name: capitalize(config.scopeName),
+        name: feature,
+        Name: capitalize(feature),
       },
       success('actions.ts', 'created'),
     )
@@ -65,8 +66,8 @@ export const createReduxScope = async () => {
       'redux/reducer.txt',
       pathOf(filePath('reducer.ts')),
       {
-        name: config.scopeName,
-        Name: capitalize(config.scopeName),
+        name: feature,
+        Name: capitalize(feature),
       },
       success('reducer.ts', 'created'),
     )
@@ -75,7 +76,7 @@ export const createReduxScope = async () => {
       'redux/state.txt',
       pathOf(filePath('state.ts')),
       {
-        Name: capitalize(config.scopeName),
+        Name: capitalize(feature),
       },
       success('state.ts', 'created'),
     )
@@ -84,7 +85,7 @@ export const createReduxScope = async () => {
       'redux/services.txt',
       pathOf(filePath('services.ts')),
       {
-        Name: capitalize(config.scopeName),
+        Name: capitalize(feature),
       },
       success('services.ts', 'created'),
     )
@@ -93,8 +94,8 @@ export const createReduxScope = async () => {
       'redux/sagas.txt',
       pathOf(filePath('sagas.ts')),
       {
-        name: config.scopeName,
-        Name: capitalize(config.scopeName),
+        name: feature,
+        Name: capitalize(feature),
       },
       success('sagas.ts', 'created'),
     )
@@ -103,8 +104,8 @@ export const createReduxScope = async () => {
       'redux/hooks.txt',
       pathOf(filePath('hooks.ts')),
       {
-        name: config.scopeName,
-        Name: capitalize(config.scopeName),
+        name: feature,
+        Name: capitalize(feature),
       },
       success('hooks.ts', 'created'),
     )
@@ -113,7 +114,7 @@ export const createReduxScope = async () => {
       'redux/export-hooks.txt',
       path(`redux/hooks.ts`),
       {
-        name: config.scopeName,
+        name: feature,
       },
       success('hooks.ts', 'updated'),
     )
@@ -122,7 +123,7 @@ export const createReduxScope = async () => {
       'redux/export-sagas.txt',
       path(`redux/sagas.ts`),
       {
-        name: config.scopeName,
+        name: feature,
       },
       success('sagas.ts', 'updated'),
     )
@@ -131,7 +132,7 @@ export const createReduxScope = async () => {
       'redux/export-reducer.txt',
       path(`redux/reducers.ts`),
       {
-        name: config.scopeName,
+        name: feature,
       },
       success('reducer.ts', 'updated'),
     )

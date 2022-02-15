@@ -10,9 +10,6 @@ export const create = async (
   callback: (err: any) => void,
 ) => {
   const templatePath = Path.resolve(__dirname, './templates/', templateName)
-
-  console.log(filepath)
-
   const templateContent = await Fs.readFileSync(templatePath, 'utf8')
   return Fs.writeFile(filepath, Ejs.render(templateContent, data), callback)
 }
@@ -33,18 +30,3 @@ export const update = async (
     callback,
   )
 }
-
-// const alter = async (filepath, data) => {
-//
-//   const _data = await fs.readFileSync(old, 'utf8')
-//   const _template = await fs.readFileSync(
-//     path.resolve(__dirname, './templates/alter'),
-//     'utf8',
-//   )
-//
-// }
-
-// module.exports = {
-//   format,
-//   alter,
-// }

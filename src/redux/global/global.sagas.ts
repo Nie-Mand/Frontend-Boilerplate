@@ -2,7 +2,7 @@ import { call, put, takeLatest, all } from 'redux-saga/effects'
 import type { Action } from 'app/types/redux'
 import * as constants from './global.constants'
 import * as api from './global.services'
-
+import { push } from 'redux-first-history'
 // ! FIXME: add routing in sagas
 
 export function* exampleSaga() {
@@ -12,7 +12,7 @@ export function* exampleSaga() {
       // const response: Response = yield call(api.helloWorld)
       const response: Response = 'hello world'
       console.log(response)
-
+      put(push('/walid'))
       if (response) {
         yield put({
           type: constants.createUser.success,

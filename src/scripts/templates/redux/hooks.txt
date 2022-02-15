@@ -6,7 +6,6 @@ import { type State } from './<%= name %>.state'
 
 export const use<%= Name %> = () => {
   const actions = useActions()
-  const state = useSelector((state: State) => state)
   const state = useSelector<{ <%= name %>: State }>(({ <%= name %> }) => <%= name %>)
 
   const create<%= Name %> = useCallback(actions.create<%= Name %>, [])

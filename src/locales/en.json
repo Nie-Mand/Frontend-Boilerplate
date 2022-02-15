@@ -1,16 +1,8 @@
 {
-  "translation": {
-    "home.welcome": "Hello World"
-  },
-  "xyz": {
-    "home.welcome": "Bonjour le Monde"
-  },
-  "admin": {},
-  "home": {
-    "welcome": {
-      "id": "welcome",
-      "defaultMessage": "Welcome to React"
+    "pages": {
+        "welcome": {
+            "id": "welcome",
+            "component": {}
+        }
     }
-  },
-  "login": {}
 }

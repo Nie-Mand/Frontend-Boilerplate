@@ -7,10 +7,10 @@ const main = async () => {
       type: 'list',
       name: 'requested',
       message: 'What do you want to create?',
-      choices: ['reduxScope', 'route'],
+      choices: ['feature', 'route'],
     },
   ])
-  if (request.requested === 'reduxScope') {
+  if (request.requested === 'feature') {
     await createReduxScope()
   } else {
     console.log('idk man')

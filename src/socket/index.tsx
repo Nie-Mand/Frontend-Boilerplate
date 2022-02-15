@@ -1,20 +1,22 @@
 import { io } from 'socket.io-client'
 import { useEffect } from 'react'
 
-const SocketProvider = ({ children }: Props) => {
+const SocketProvider = ({ children, isListening }: Props) => {
   useEffect(() => {
-    const socket = io(import.meta.env.VITE_SOCKET_URL, {})
+    if (isListening) {
+      const socket = io(import.meta.env.VITE_SOCKET_URL, {})
 
-    socket.on('connect', function () {
-      console.log('connected as', socket.id)
-    })
+      socket.on('connect', function () {
+        console.log('connected as', socket.id)
+      })
 
-    socket.on('event', () => {
-      console.log('event')
-    })
+      socket.on('event', () => {
+        console.log('event')
+      })
 
-    return () => {
-      socket.close()
+      return () => {
+        socket.close()
+      }
     }
   }, [])
 
@@ -22,6 +24,7 @@ const SocketProvider = ({ children }: Props) => {
 }
 type Props = {
   children: JSX.Element | JSX.Element[]
+  isListening: boolean
 }
 
 export default SocketProvider
