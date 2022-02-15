@@ -19,7 +19,7 @@ export const useSwitchLanguage = () => {
   const { i18n } = useTranslation()
 
   const handleSwitchLanguage = () => {
-    i18n.changeLanguage(i18n.language === 'en' ? 'fr' : 'en')
+    i18n.changeLanguage(i18n.language == 'en' ? 'fr' : 'en')
   }
 
   return handleSwitchLanguage
