@@ -25,7 +25,7 @@ export const createRoutes: RoutesCreator = routes => {
 }
 
 // type CreateMessages = (
-//   ns: string,
+//
 //   messages: { id: string; defaultMessage: string }[],
 // ) => {
 //   [key: string]: { id: string; defaultMessage: string }
