@@ -1,1 +1,4 @@
-{}
+{
+  "pages.welcome.id": "welcome",
+  "pages.welcome.component": {}
+}

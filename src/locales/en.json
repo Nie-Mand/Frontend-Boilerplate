@@ -1,8 +1,4 @@
 {
-    "pages": {
-        "welcome": {
-            "id": "welcome",
-            "component": {}
-        }
-    }
+  "pages.welcome.id": "welcome",
+  "pages.welcome.component": {}
 }
