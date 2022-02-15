@@ -9,7 +9,7 @@ export const createRoutes: RoutesCreator = routes => {
         () =>
           import(
             /* @vite-ignore */
-            route.componentPath
+            `./pages/${route.componentPath}`
           ),
       ),
       Layout: lazy(

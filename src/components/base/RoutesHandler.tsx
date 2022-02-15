@@ -1,13 +1,24 @@
 import { Route, Routes, Navigate } from 'react-router-dom'
 import { Route as RouteType } from 'app/types/base'
 import NotFound from './NotFound'
+import Forbidden from './Forbidden'
 
 const Protected = (props: { element: JSX.Element; roles?: string[] }) => {
   const { element, roles } = props
-  if (!roles || roles.length === 0) return element
 
   // TODO: Implement authorization
-  return <Navigate to="/login" replace />
+  const role = 'user'
+
+  // * if the page is accessible
+  if (!roles || roles.length === 0) return element
+
+  // * if he is not authentified
+  if (!role) return <Navigate to="/login" replace />
+
+  // * if he is authentified and doesnt have the required role
+  if (roles.indexOf(role) === -1) return <Forbidden />
+
+  return element
 }
 
 export const RoutesSetup = (props: { routes: RouteType[] }) => {
