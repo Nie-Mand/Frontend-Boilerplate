@@ -1,6 +1,12 @@
 import { useMessages, useExample } from 'app/hooks'
 import messages from './messages.json'
 import { Button } from 'app/ui'
+import styled from '@emotion/styled'
+
+const Title = styled.h1`
+  color: red;
+`
+
 const HomePage = () => {
   const t = useMessages('home')
   const { createUser } = useExample()
@@ -17,7 +23,7 @@ const HomePage = () => {
       >
         heloo
       </button>
-      <h1>{t(messages.welcome)}</h1>
+      <Title>{t(messages.welcome)}</Title>
     </div>
   )
 }

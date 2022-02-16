@@ -9,21 +9,17 @@ import {
   createReduxHistory,
 } from './config'
 
-import { History } from 'history'
-
 const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(
   reducer,
   composeWithDevTools(
-    applyMiddleware(customMiddleware),
-    applyMiddleware(sagaMiddleware),
-    applyMiddleware(routerMiddleware),
+    applyMiddleware(customMiddleware, sagaMiddleware, routerMiddleware),
   ),
 )
 
 sagaMiddleware.run(saga)
 
-export const history: History = createReduxHistory(store)
+export const history = createReduxHistory(store)
 
 export default store

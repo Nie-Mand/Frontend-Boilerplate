@@ -1,28 +1,24 @@
 import { HelmetProvider } from 'react-helmet-async'
 import { Provider as ReduxProvider } from 'react-redux'
-// import { BrowserRouter as Router } from 'react-router-dom'
 import store from './redux/store'
-import { history } from './redux/store'
 import { Toaster } from 'react-hot-toast'
 import { ThemeProvider } from '@mui/material'
 import theme from './ui/theme'
 import SocketProvider from './socket'
-// import { HistoryRouter as Router } from 'redux-first-history/rr6'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { RouterProvider } from './routes'
+
 const Providers = (props: Props) => {
   return (
-    <ReduxProvider store={store}>
-      {console.log('ss', history.location)}
-      <ThemeProvider theme={theme}>
-        <Router>
-          {/* <Router> */}
-          <Toaster />
+    <HelmetProvider>
+      <ReduxProvider store={store}>
+        <ThemeProvider theme={theme}>
           <SocketProvider isListening={false}>
-            <HelmetProvider>{props.children}</HelmetProvider>
+            <Toaster />
+            <RouterProvider>{props.children}</RouterProvider>
           </SocketProvider>
-        </Router>
-      </ThemeProvider>
-    </ReduxProvider>
+        </ThemeProvider>
+      </ReduxProvider>
+    </HelmetProvider>
   )
 }
 

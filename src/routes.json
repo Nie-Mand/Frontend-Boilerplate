@@ -1,19 +1,19 @@
 [
-    {
-        "path": "/",
-        "componentPath": "home",
-        "layout": "LeftSidebar",
-        "roles": [] 
-    },
-    {
-        "path": "/admin",
-        "componentPath": "admin",
-        "layout": "Default",
-        "roles": ["admin"] 
-    },
-    {
-        "path": "/login",
-        "componentPath": "login",
-        "roles": [] 
-    }
+  {
+    "path": "/",
+    "componentPath": "home",
+    "layout": "LeftSidebar",
+    "roles": []
+  },
+  {
+    "path": "/admin",
+    "componentPath": "admin",
+    "layout": "Default",
+    "roles": ["admin"]
+  },
+  {
+    "path": "/login",
+    "componentPath": "login",
+    "roles": []
+  }
 ]

@@ -9,7 +9,7 @@ export const useMessages = (ns: string) => {
     defaultMessage: string
   }
   const handler = (message: Message) => {
-    return t(`${ns}.${message.id}`, { defaultMessage: message.defaultMessage })
+    return t(`${ns}:${message.id}`, message.defaultMessage)
   }
 
   return handler

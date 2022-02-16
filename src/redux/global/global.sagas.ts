@@ -11,8 +11,7 @@ export function* exampleSaga() {
       type Response = any
       // const response: Response = yield call(api.helloWorld)
       const response: Response = 'hello world'
-      console.log(response)
-      put(push('/walid'))
+      yield put(push('/walid'))
       if (response) {
         yield put({
           type: constants.createUser.success,
