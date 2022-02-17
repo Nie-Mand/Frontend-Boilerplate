@@ -3,13 +3,6 @@ import { lazy } from 'react'
 
 export const createRoutes: RoutesCreator = routes => {
   return routes.map(route => {
-    const params = route.path
-      .split('/')
-      .filter(sub => sub.startsWith(':'))
-      .map(sub => sub.slice(1))
-
-    console.log(params)
-
     return {
       path: route.path,
       Component: lazy(
@@ -30,13 +23,3 @@ export const createRoutes: RoutesCreator = routes => {
     }
   })
 }
-
-// type CreateMessages = (
-//
-//   messages: { id: string; defaultMessage: string }[],
-// ) => {
-//   [key: string]: { id: string; defaultMessage: string }
-// }
-// export const createMessages: CreateMessages = messages => {
-//   return messages.reduce()
-// }

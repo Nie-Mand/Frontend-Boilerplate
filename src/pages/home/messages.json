@@ -3,8 +3,8 @@
     "id": "title",
     "defaultMessage": "Home page"
   },
-  "welcome": {
-    "id": "welcome",
-    "defaultMessage": "Welcome to React"
+  "hello": {
+    "id": "hello",
+    "defaultMessage": "hello, home"
   }
 }

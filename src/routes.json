@@ -2,7 +2,7 @@
   {
     "path": "/",
     "componentPath": "home",
-    "layout": "LeftSidebar",
+    "layout": "Default",
     "roles": []
   }
 ]

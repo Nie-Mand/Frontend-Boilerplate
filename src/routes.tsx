@@ -1,5 +1,5 @@
 import { createRoutes } from './utils'
-import routes from './routes.json'
+import routesList from './routes.json'
 import { HistoryRouter as Router } from 'redux-first-history/rr6'
 import { history } from './redux/store'
 
@@ -12,4 +12,19 @@ type Props = {
   children: JSX.Element | JSX.Element[]
 }
 
-export default createRoutes(routes)
+export default createRoutes(routesList)
+
+const merge = (path: string, params: string[]) =>
+  path
+    .split('/')
+    .map(chunk => (chunk.startsWith(':') ? params.shift() : chunk))
+    .join('/')
+
+// ! FIXME: Routes are not typed
+export const routes = routesList.reduce(
+  (acc, { componentPath, path }) => ({
+    ...acc,
+    [componentPath]: (...params: string[]) => merge(path, params),
+  }),
+  {} as { [key: string]: (...params: string[]) => string },
+)
