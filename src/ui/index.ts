@@ -1,2 +1,4 @@
-export { Button } from './Button'
-export { Input } from './Input'
+export { styled } from '@mui/material'
+export * from './Button'
+export * from './Input'
+export * from './Typography'

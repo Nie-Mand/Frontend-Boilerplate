@@ -1,6 +1,10 @@
 {
-    "welcome": {
-        "id": "welcome",
-        "defaultMessage": "Welcome to React"
-    }
+  "title": {
+    "id": "title",
+    "defaultMessage": "Home page"
+  },
+  "welcome": {
+    "id": "welcome",
+    "defaultMessage": "Welcome to React"
+  }
 }

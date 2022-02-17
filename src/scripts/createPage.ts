@@ -1,33 +1,72 @@
 import question from 'inquirer'
-import { create, update } from './utils'
+import { create } from './utils'
 import Path from 'path'
 import Fs from 'fs'
 import { createSpinner } from 'nanospinner'
 import { capitalize } from 'lodash'
+import glob from 'glob'
 
 const path = (_path: string) => Path.resolve(__dirname, '../', _path)
 
-export const createPage = async () => {
-  const config = await question.prompt([
-    {
-      type: 'input',
-      name: 'scopeName',
-      message: 'What is the name of the scope?',
-      default: 'example',
-    },
-  ])
+export const createPage = () => {
+  glob('src/components/layouts/*.tsx', async (_, paths) => {
+    const layouts = paths.map(
+      path => path.split('/').slice(-1)[0].split('.')[0],
+    )
 
-  const spinner = createSpinner(`creating ${config.scopeName}..\n`).start()
+    const config = await question.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'What is the name of the page?',
+        validate: (input: string) => {
+          if (input.length === 0) {
+            return 'Please enter a name'
+          }
 
-  const exists = Fs.existsSync(path(`redux/${config.scopeName}`))
+          if (Fs.existsSync(path(`pages/${input.toLowerCase()}`))) {
+            return `${input} already exists`
+          }
+          return true
+        },
+        default: 'home',
+      },
+      {
+        type: 'input',
+        name: 'path',
+        message: 'What is the path of the page? (could contain parameters)',
+        validate: (value: string) => {
+          if (value.length > 0) {
+            return true
+          }
+          return 'Path is required'
+        },
+      },
+      {
+        type: 'list',
+        name: 'layout',
+        message: 'What is the layout of the page?',
+        choices: layouts,
+        default: 'Default',
+      },
+    ])
 
-  if (!exists) {
-    Fs.mkdirSync(path(`redux/${config.scopeName}`))
+    const name = config.name.toLowerCase()
 
-    const pathOf = (filename: string) =>
-      path(`redux/${config.scopeName}/${filename}`)
+    const spinner = createSpinner(`creating ${name}..\n`).start()
 
-    const filePath = (file: string) => `/${config.scopeName}.${file}`
+    Fs.mkdirSync(path(`pages/${name}`))
+
+    const pathOf = (filename: string) => path(`pages/${name}/${filename}`)
+
+    Fs.mkdirSync(pathOf(`components`))
+
+    const route = {
+      path: config.path,
+      componentPath: name,
+      layout: config.layout,
+      roles: [],
+    }
 
     const success = (file: string, action: string) => (e: any) => {
       if (e) {
@@ -36,108 +75,71 @@ export const createPage = async () => {
         })
       } else {
         spinner.success({
-          text: action + ' ' + filePath(file),
+          text: action + ' ' + file,
         })
       }
     }
 
-    await create(
-      'redux/constants.txt',
-      pathOf(filePath('constants.ts')),
-      {
-        Name: capitalize(config.scopeName),
-        NAME: config.scopeName.toUpperCase(),
-      },
-      success('constants.ts', 'created'),
+    await Fs.writeFile(
+      pathOf('./components/index.ts'),
+      '',
+      success('components/index.ts', 'created'),
     )
 
     await create(
-      'redux/actions.txt',
-      pathOf(filePath('actions.ts')),
+      'page/index.txt',
+      pathOf('./index.tsx'),
       {
-        name: config.scopeName,
-        Name: capitalize(config.scopeName),
+        Name: capitalize(name),
+        name,
       },
-      success('actions.ts', 'created'),
+      success('index.tsx', 'created'),
     )
 
     await create(
-      'redux/reducer.txt',
-      pathOf(filePath('reducer.ts')),
+      'page/messages.txt',
+      pathOf('./messages.json'),
       {
-        name: config.scopeName,
-        Name: capitalize(config.scopeName),
+        Name: capitalize(name),
+        name,
       },
-      success('reducer.ts', 'created'),
+      success('messages.json', 'created'),
     )
 
     await create(
-      'redux/state.txt',
-      pathOf(filePath('state.ts')),
+      'page/component.txt',
+      pathOf(`./${capitalize(name)}.tsx`),
       {
-        Name: capitalize(config.scopeName),
+        Name: capitalize(name),
+        name,
       },
-      success('state.ts', 'created'),
+      success(`${capitalize(name)}.tsx`, 'created'),
     )
 
     await create(
-      'redux/services.txt',
-      pathOf(filePath('services.ts')),
+      'page/test.txt',
+      pathOf(`./${capitalize(name)}.test.tsx`),
       {
-        Name: capitalize(config.scopeName),
+        Name: capitalize(name),
       },
-      success('services.ts', 'created'),
+      success(`${capitalize(name)}.test.tsx`, 'created'),
     )
 
     await create(
-      'redux/sagas.txt',
-      pathOf(filePath('sagas.ts')),
-      {
-        name: config.scopeName,
-        Name: capitalize(config.scopeName),
-      },
-      success('sagas.ts', 'created'),
+      'page/styled.txt',
+      pathOf(`./${capitalize(name)}.styled.tsx`),
+      {},
+      success(`${capitalize(name)}.styled.tsx`, 'created'),
     )
 
-    await create(
-      'redux/hooks.txt',
-      pathOf(filePath('hooks.ts')),
-      {
-        name: config.scopeName,
-        Name: capitalize(config.scopeName),
-      },
-      success('hooks.ts', 'created'),
-    )
+    const routesJSON = await Fs.readFileSync(path('routes.json'), 'utf8')
 
-    await update(
-      'redux/export-hooks.txt',
-      path(`redux/hooks.ts`),
-      {
-        name: config.scopeName,
-      },
-      success('hooks.ts', 'updated'),
-    )
+    const routes = JSON.parse(routesJSON)
 
-    await update(
-      'redux/export-sagas.txt',
-      path(`redux/sagas.ts`),
-      {
-        name: config.scopeName,
-      },
-      success('sagas.ts', 'updated'),
-    )
+    routes.push(route)
 
-    await update(
-      'redux/export-reducer.txt',
-      path(`redux/reducers.ts`),
-      {
-        name: config.scopeName,
-      },
-      success('reducer.ts', 'updated'),
-    )
-  } else {
-    spinner.error({
-      text: 'the folder already exists',
-    })
-  }
+    await Fs.writeFileSync(path('routes.json'), JSON.stringify(routes, null, 2))
+
+    success(`routes.json`, 'updated')
+  })
 }

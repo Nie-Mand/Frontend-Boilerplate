@@ -1,19 +1,19 @@
 import { Helmet } from 'react-helmet-async'
-import Home from './Home'
+import <%= Name %> from './<%= Name %>'
 import { useMessages } from 'app/hooks'
 import messages from './messages.json'
 
-const HomePage = () => {
-  const t = useMessages('home')
+const <%= Name %>Page = () => {
+  const t = useMessages('<%= name %>')
 
   return (
     <>
       <Helmet>
         <title>{t(messages.title)}</title>
       </Helmet>
-      <Home />
+      <<%= Name %> />
     </>
   )
 }
 
-export default HomePage
+export default <%= Name %>Page

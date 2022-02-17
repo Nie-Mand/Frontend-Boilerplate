@@ -10,6 +10,7 @@ export const create = async (
   callback: (err: any) => void,
 ) => {
   const templatePath = Path.resolve(__dirname, './templates/', templateName)
+
   const templateContent = await Fs.readFileSync(templatePath, 'utf8')
   return Fs.writeFile(filepath, Ejs.render(templateContent, data), callback)
 }

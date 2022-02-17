@@ -2,7 +2,6 @@ import * as Path from 'path'
 import * as Fs from 'fs/promises'
 import glob from 'glob'
 import flatten from 'flat'
-import { isEmpty } from 'lodash'
 
 const path = (_path: string) => Path.resolve(__dirname, '../', _path)
 
