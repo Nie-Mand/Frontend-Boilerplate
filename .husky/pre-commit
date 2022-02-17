@@ -1,6 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-# npm run format `git diff --name-only --staged | grep "^src/" | tr '\n' ' '`
-# npm run lint `git diff --name-only --staged | tr '\n' ' '`
+npm run format `git diff --name-only --staged --diff-filter=d | grep "^src/" | tr '\n' ' '`
+npm run lint `git diff --name-only --staged | tr '\n' ' '`
 # npm run collect
