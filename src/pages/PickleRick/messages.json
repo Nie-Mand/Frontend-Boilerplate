@@ -1,0 +1,10 @@
+{
+    "title": {
+        "id": "title",
+        "defaultMessage": "PickleRick page"
+    },
+    "hello": {
+        "id": "hello",
+        "defaultMessage": "hello, PickleRick"
+    }
+}

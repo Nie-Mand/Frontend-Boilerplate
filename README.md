@@ -1,7 +1,7 @@
 # Frontend Boilerplate
 
 this boilerplate was created using Vite and React, and it contains :
-+ React Router DOM v5
++ React Router DOM v6
 + Eslint, prettier, Husky to format and lint code before commit
 + Redux, Redux Saga for state management
 + Cypress for testing

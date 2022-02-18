@@ -1,0 +1,6 @@
+<% if (noParams) { %>
+export const <%= name %> = () => '<%= path %>'
+<% } %>
+<% if (params) { %>
+export const <%= name %> = (params: { <%= paramTypes %>}) => `<%= path %>`
+<% } %>

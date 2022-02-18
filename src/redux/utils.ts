@@ -9,8 +9,8 @@ const createBasicActionType = (actionName: string) => actionName
 
 export const createActionType = (prefix: string) => {
   return {
-    async: (action: string) => createAsyncActionType(`${prefix}_${action}`),
-    basic: (action: string) => createBasicActionType(`${prefix}_${action}`),
+    async: (action: string) => createAsyncActionType(`${prefix}:${action}`),
+    basic: (action: string) => createBasicActionType(`${prefix}:${action}`),
   }
 }
 

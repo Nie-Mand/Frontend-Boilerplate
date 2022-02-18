@@ -1,7 +1,13 @@
 [
   {
     "path": "/",
-    "componentPath": "home",
+    "componentPath": "Home",
+    "layout": "Default",
+    "roles": []
+  },
+  {
+    "path": "pickle/:rick/:episode",
+    "componentPath": "PickleRick",
     "layout": "Default",
     "roles": []
   }

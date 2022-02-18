@@ -1,13 +1,13 @@
 import { useMessages } from 'app/hooks'
 import messages from './messages.json'
-import { Title } from './<%= Name %>.styled'
+import { Title, Container } from './<%= Name %>.styled'
 
 const <%= Name %> = () => {
   const t = useMessages('<%= name %>')
   return (
-    <div>
+    <Container>
       <Title>{t(messages.hello)}</Title>
-    </div>
+    </Container>
   )
 }
 

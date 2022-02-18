@@ -1,4 +1,4 @@
-// TODO: Implement NotFound component
+// TODO: Implement Forbidden component
 
 const Forbidden = () => {
   return (

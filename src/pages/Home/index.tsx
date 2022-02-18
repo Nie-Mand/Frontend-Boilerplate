@@ -4,7 +4,7 @@ import { useMessages } from 'app/hooks'
 import messages from './messages.json'
 
 const HomePage = () => {
-  const t = useMessages('home')
+  const t = useMessages('Home')
 
   return (
     <>

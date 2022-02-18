@@ -14,17 +14,7 @@ type Props = {
 
 export default createRoutes(routesList)
 
-const merge = (path: string, params: string[]) =>
-  path
-    .split('/')
-    .map(chunk => (chunk.startsWith(':') ? params.shift() : chunk))
-    .join('/')
+export const home = () => '/'
 
-// ! FIXME: Routes are not typed
-export const routes = routesList.reduce(
-  (acc, { componentPath, path }) => ({
-    ...acc,
-    [componentPath]: (...params: string[]) => merge(path, params),
-  }),
-  {} as { [key: string]: (...params: string[]) => string },
-)
+export const pickleRick = (params: { rick: string; episode: string }) =>
+  `/pickle/${params.rick}/${params.episode}`

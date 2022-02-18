@@ -3,10 +3,16 @@ import { create } from './utils'
 import Path from 'path'
 import Fs from 'fs'
 import { createSpinner } from 'nanospinner'
-import { capitalize } from 'lodash'
 import glob from 'glob'
+import Ejs from 'ejs'
 
 const path = (_path: string) => Path.resolve(__dirname, '../', _path)
+
+const capitalize = (name: string) =>
+  name.charAt(0).toUpperCase() + name.slice(1)
+
+const disCapitalize = (name: string) =>
+  name.charAt(0).toLowerCase() + name.slice(1)
 
 export const createPage = () => {
   glob('src/components/layouts/*.tsx', async (_, paths) => {
@@ -24,23 +30,17 @@ export const createPage = () => {
             return 'Please enter a name'
           }
 
-          if (Fs.existsSync(path(`pages/${input.toLowerCase()}`))) {
+          if (Fs.existsSync(path(`pages/${capitalize(input)}`))) {
             return `${input} already exists`
           }
           return true
         },
-        default: 'home',
+        default: 'Home',
       },
       {
         type: 'input',
         name: 'path',
         message: 'What is the path of the page? (could contain parameters)',
-        validate: (value: string) => {
-          if (value.length > 0) {
-            return true
-          }
-          return 'Path is required'
-        },
       },
       {
         type: 'list',
@@ -51,7 +51,7 @@ export const createPage = () => {
       },
     ])
 
-    const name = config.name.toLowerCase()
+    const name = capitalize(config.name)
 
     const spinner = createSpinner(`creating ${name}..\n`).start()
 
@@ -130,6 +130,57 @@ export const createPage = () => {
       pathOf(`./${capitalize(name)}.styled.tsx`),
       {},
       success(`${capitalize(name)}.styled.tsx`, 'created'),
+    )
+
+    const params = config.path.includes(':')
+
+    const pathString =
+      '/' +
+      config.path
+        .split('/')
+        .filter((path: string) => path.length > 0)
+        .map((path: string) => {
+          if (path.includes(':') && path.length > 1) {
+            const param = path.split(':')[1]
+            return '${params.' + param + '}'
+          }
+          return path
+        })
+        .join('/')
+
+    const paramTypes = config.path
+      .split('/')
+      .filter((path: string) => path.length > 0)
+      .filter((path: string) => path.includes(':') && path.length > 1)
+      .map((path: string) => `${path.split(':')[1]}: string, `)
+      .join('')
+
+    const data = {
+      params,
+      noParams: !params,
+      name: disCapitalize(name),
+      path: pathString,
+      paramTypes,
+    }
+
+    const routesConfigContent = await Fs.readFileSync(
+      path('routes.tsx'),
+      'utf8',
+    )
+
+    const routesConfigtemplatePath = Path.resolve(
+      __dirname,
+      './templates/page/routes.txt',
+    )
+
+    const templateContent = await Fs.readFileSync(
+      routesConfigtemplatePath,
+      'utf8',
+    )
+
+    await Fs.writeFileSync(
+      path('routes.tsx'),
+      routesConfigContent + '\n' + Ejs.render(templateContent, data),
     )
 
     const routesJSON = await Fs.readFileSync(path('routes.json'), 'utf8')

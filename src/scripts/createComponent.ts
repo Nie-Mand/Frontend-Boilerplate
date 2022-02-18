@@ -3,9 +3,10 @@ import { create } from './utils'
 import Path from 'path'
 import Fs from 'fs'
 import { createSpinner } from 'nanospinner'
-import { capitalize } from 'lodash'
 import glob from 'glob'
 
+const capitalize = (name: string) =>
+  name.charAt(0).toUpperCase() + name.slice(1)
 const path = (_path: string) => Path.resolve(__dirname, '../', _path)
 
 export const createComponent = async () => {
@@ -51,8 +52,7 @@ export const createComponent = async () => {
           },
         },
       ])
-
-      const name = _name.toLowerCase()
+      const name = capitalize(_name)
 
       creator(name, `pages/${page}/components`)
     })
@@ -73,7 +73,7 @@ export const createComponent = async () => {
         },
       },
     ])
-    const name = _name.toLowerCase()
+    const name = capitalize(_name)
 
     creator(name, `components/shared`)
 

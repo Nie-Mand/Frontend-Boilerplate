@@ -1,9 +1,9 @@
 import { useMessages } from 'app/hooks'
 import messages from './messages.json'
-import { Title, Container } from './<%= Name %>.styled'
+import { Title, Container } from './PickleRick.styled'
 
-const <%= Name %> = () => {
-  const t = useMessages('<%= name %>')
+const PickleRick = () => {
+  const t = useMessages('PickleRick')
   return (
     <Container>
       <Title>{t(messages.hello)}</Title>
@@ -13,4 +13,4 @@ const <%= Name %> = () => {
 
 // type Props = {}
 
-export default <%= Name %>
+export default PickleRick
