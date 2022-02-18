@@ -6,12 +6,7 @@ import * as routes from 'app/routes'
 const Home = () => {
   const t = useMessages('Home')
 
-  console.log(
-    routes.pickleRick({
-      rick: 'rick',
-      episode: '1',
-    }),
-  )
+  console.log()
 
   return (
     <Container>

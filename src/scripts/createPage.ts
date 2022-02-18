@@ -82,7 +82,7 @@ export const createPage = () => {
 
     await Fs.writeFile(
       pathOf('./components/index.ts'),
-      '',
+      'export {}\n',
       success('components/index.ts', 'created'),
     )
 

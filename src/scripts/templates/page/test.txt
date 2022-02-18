@@ -1,4 +1,5 @@
-
 it('renders <%= Name %> Component', () => {
     // TODO: add tests for <%= Name %> Component
 })
+
+export {}

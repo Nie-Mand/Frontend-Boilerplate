@@ -15,6 +15,3 @@ type Props = {
 export default createRoutes(routesList)
 
 export const home = () => '/'
-
-export const pickleRick = (params: { rick: string; episode: string }) =>
-  `/pickle/${params.rick}/${params.episode}`

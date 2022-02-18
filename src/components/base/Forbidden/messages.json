@@ -1,0 +1,6 @@
+{
+  "forbidden": {
+    "id": "forbidden",
+    "defaultMessage": "403, No no no.."
+  }
+}
