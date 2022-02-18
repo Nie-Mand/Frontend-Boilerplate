@@ -1,6 +1,6 @@
 import { AsyncState } from 'app/types/redux'
 
-const initialState: State = {
+const initialState: GlobalState = {
   isAuthentificated: null,
   login: {
     loading: false,
@@ -10,7 +10,7 @@ const initialState: State = {
 }
 export default initialState
 
-export type State = {
+export type GlobalState = {
   isAuthentificated: boolean | null
   login: AsyncState<null>
 }

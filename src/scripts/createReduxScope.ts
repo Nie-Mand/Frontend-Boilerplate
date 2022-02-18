@@ -42,6 +42,23 @@ export const createReduxScope = async () => {
       }
     }
 
+    const stateContent = await Fs.readFileSync(path('redux/state.ts'), 'utf8')
+
+    const lines = stateContent.trim().split('\n')
+    const ended = lines.pop()
+    lines.unshift(
+      `import { ${capitalize(
+        feature,
+      )}State } from './${feature}/${feature}.state'`,
+    )
+    lines.push(`  ${feature}: ${capitalize(feature)}State`, ended || '')
+
+    await Fs.writeFile(
+      path('redux/state.ts'),
+      lines.join('\n'),
+      success('state.ts', 'updated'),
+    )
+
     await create(
       'redux/constants.txt',
       pathOf(filePath('constants.ts')),

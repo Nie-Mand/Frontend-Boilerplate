@@ -6,8 +6,6 @@ import * as routes from 'app/routes'
 const Home = () => {
   const t = useMessages('Home')
 
-  console.log()
-
   return (
     <Container>
       <Title>{t(messages.hello)}</Title>

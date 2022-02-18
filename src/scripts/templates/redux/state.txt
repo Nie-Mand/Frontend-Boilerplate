@@ -1,6 +1,6 @@
 import { AsyncState } from 'app/types/redux'
 
-const initialState: State = {
+const initialState: <%= Name %>State = {
   create<%= Name %>: {
     loading: false,
     error: null,
@@ -9,7 +9,7 @@ const initialState: State = {
 }
 export default initialState
 
-export type State = {
+export type <%= Name %>State = {
   create<%= Name %>: AsyncState<null | <%= Name %>>
 }
 

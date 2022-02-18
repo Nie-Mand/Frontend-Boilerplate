@@ -2,12 +2,19 @@ import { useEffect, useCallback, useMemo } from 'react'
 import * as <%= name %>Actions from './<%= name %>.actions'
 import { useSelector, useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { type State } from './<%= name %>.state'
+import { createSelector } from 'reselect'
+import State from '../state'
 
 export const use<%= Name %> = () => {
-  const actions = useActions()
-  const state = useSelector<{ <%= name %>: State }>(({ <%= name %> }) => <%= name %>)
 
+  const state = useSelector(
+    createSelector(
+      (state: State) => state.<%= name %>,
+      state => state,
+    ),
+  )
+
+  const actions = useActions()
   const create<%= Name %> = useCallback(actions.create<%= Name %>, [])
 
   return {
