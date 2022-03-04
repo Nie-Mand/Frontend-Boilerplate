@@ -1,0 +1,10 @@
+{
+  "title": {
+    "id": "title",
+    "defaultMessage": "500"
+  },
+  "content": {
+    "id": "content",
+    "defaultMessage": "500 - Internal Error"
+  }
+}
