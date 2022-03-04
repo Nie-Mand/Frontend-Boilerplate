@@ -1,18 +1,19 @@
 import { Helmet } from 'react-helmet-async'
-import Home from './Home'
+import PillowTalk from './PillowTalk'
 import { useMessages } from 'app/hooks'
 import messages from './messages.json'
-const HomePage = () => {
-  const t = useMessages('Home')
+
+const PillowTalkPage = () => {
+  const t = useMessages('PillowTalk')
 
   return (
     <>
       <Helmet>
         <title>{t(messages.title)}</title>
       </Helmet>
-      <Home />
+      <PillowTalk />
     </>
   )
 }
 
-export default HomePage
+export default PillowTalkPage

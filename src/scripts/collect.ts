@@ -33,18 +33,6 @@ const collect = async () => {
 
       console.log(content)
 
-      // if (isEmpty(content)) {
-      //   console.log('nothing')
-      // } else {
-      //   console.log(content)
-      // }
-
-      // if (en[path.ns]) {
-      //   console.log('used')
-      // } else {
-      //   console.log('unused')
-      // }
-
       en[path.ns] = content.defaultMessage
     }
 

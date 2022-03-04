@@ -18,7 +18,7 @@ const SocketProvider = ({ children, isListening }: Props) => {
         socket.close()
       }
     }
-  }, [])
+  }, [isListening])
 
   return <>{children}</>
 }

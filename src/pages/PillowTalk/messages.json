@@ -1,0 +1,10 @@
+{
+  "title": {
+    "id": "title",
+    "defaultMessage": "PillowTalk page"
+  },
+  "hello": {
+    "id": "hello",
+    "defaultMessage": "hello, PillowTalk"
+  }
+}

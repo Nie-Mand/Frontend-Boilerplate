@@ -4,5 +4,17 @@
     "componentPath": "Home",
     "layout": "Default",
     "roles": []
+  },
+  {
+    "path": "pillo/:talk/:id",
+    "componentPath": "PillowTalk",
+    "layout": "LeftSidebar",
+    "roles": []
+  },
+  {
+    "path": "eorp/:id/:fo",
+    "componentPath": "Erok",
+    "layout": "LeftSidebar",
+    "roles": []
   }
 ]
