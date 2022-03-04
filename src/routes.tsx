@@ -15,9 +15,3 @@ type Props = {
 export default createRoutes(routesList)
 
 export const home = () => '/'
-
-export const pillowTalk = (params: { talk: string; id: string }) =>
-  `/pillo/${params.talk}/${params.id}`
-
-export const erok = (params: { id: string; fo: string }) =>
-  `/eorp/${params.id}/${params.fo}`
