@@ -15,3 +15,5 @@ type Props = {
 export default createRoutes(routesList)
 
 export const home = () => '/'
+
+export const blog = (params: { blog: string }) => `/blog/${params.blog}`

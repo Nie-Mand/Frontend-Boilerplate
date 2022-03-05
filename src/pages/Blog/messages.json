@@ -1,0 +1,10 @@
+{
+  "title": {
+    "id": "title",
+    "defaultMessage": "Blog page"
+  },
+  "hello": {
+    "id": "hello",
+    "defaultMessage": "hello, Blog"
+  }
+}
