@@ -64,7 +64,6 @@ export const createPage = () => {
     const route = {
       path: config.path,
       componentPath: name,
-      layout: config.layout,
       roles: [],
     }
 
@@ -92,6 +91,7 @@ export const createPage = () => {
       {
         Name: capitalize(name),
         name,
+        layout: config.layout,
       },
       success('index.tsx', 'created'),
     )

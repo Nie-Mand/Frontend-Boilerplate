@@ -3,11 +3,5 @@
     "path": "/",
     "componentPath": "Home",
     "roles": []
-  },
-  {
-    "path": "/blog/:blog",
-    "componentPath": "Blog",
-    "layout": "LeftSidebar",
-    "roles": []
   }
 ]

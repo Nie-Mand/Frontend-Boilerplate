@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async'
 import <%= Name %> from './<%= Name %>'
 import { useMessages } from 'app/hooks'
 import messages from './messages.json'
+import Layout from 'app/components/layouts/<%= layout %>'
 
 const <%= Name %>Page = () => {
   const t = useMessages('<%= name %>')
@@ -11,7 +12,9 @@ const <%= Name %>Page = () => {
       <Helmet>
         <title>{t(messages.title)}</title>
       </Helmet>
-      <<%= Name %> />
+      <Layout>
+        <<%= Name %> />
+      </Layout>
     </>
   )
 }
