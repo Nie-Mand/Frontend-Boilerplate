@@ -2,6 +2,8 @@ import { Helmet } from 'react-helmet-async'
 import Home from './Home'
 import { useMessages } from 'app/hooks'
 import messages from './messages.json'
+import Layout from 'app/components/layouts/Default'
+
 const HomePage = () => {
   const t = useMessages('Home')
 
@@ -10,7 +12,9 @@ const HomePage = () => {
       <Helmet>
         <title>{t(messages.title)}</title>
       </Helmet>
-      <Home />
+      <Layout>
+        <Home />
+      </Layout>
     </>
   )
 }

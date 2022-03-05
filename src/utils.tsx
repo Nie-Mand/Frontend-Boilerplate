@@ -12,13 +12,6 @@ export const createRoutes: RoutesCreator = routes => {
             `./pages/${route.componentPath}`
           ),
       ),
-      Layout: lazy(
-        () =>
-          import(
-            /* @vite-ignore */
-            `./components/layouts/${route.layout || 'Default'}`
-          ),
-      ),
       roles: route.roles,
     }
   })
