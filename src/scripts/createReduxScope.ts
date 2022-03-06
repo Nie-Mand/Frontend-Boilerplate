@@ -146,6 +146,15 @@ export const createReduxScope = async () => {
     )
 
     await update(
+      'redux/export-service.txt',
+      path(`redux/services.ts`),
+      {
+        name: feature,
+      },
+      success('services.ts', 'updated'),
+    )
+
+    await update(
       'redux/export-reducer.txt',
       path(`redux/reducers.ts`),
       {
